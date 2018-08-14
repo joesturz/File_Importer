@@ -1,0 +1,8 @@
+{
+    "name": "Homer Simpson",
+    "city": "Springfield",
+    "state": "Unknown",
+    "country": "United States",
+    "family": ["Marge", "Bart", "Lisa", "Maggie"],
+    "year": 1989
+}

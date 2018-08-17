@@ -43,7 +43,37 @@ describe FileImporter do
         expect(json_hash.count).to eq 57
       end
     end
-
   end
+  context 'loops' do
+    let(:array) { [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }
+    it 'can loop over an array' do
+      new_array = []
+      array.each do |num|
+        new_array << num
+      end
+      expect(new_array).to match_array(array)
+    end
 
+    it 'can get the even elements of an array' do
+      new_array = []
+      array.each_with_index do |num, index|
+        if (index % 2) == 1
+          new_array << num
+        end
+      end
+      expect(new_array).to match_array([2, 4, 6, 8, 10])
+    end
+
+    it 'can get 2 elements per iteration' do
+      new_array = []
+      array.each_with_index do |num, index|
+        if index * 2 >= array.count
+          break
+        end
+        new_array << {first: array[index * 2], second: array[(index * 2) + 1]}
+        index = index + 5
+      end
+      expect(new_array).to match_array([{first: 1, second: 2}, {first: 3, second: 4}, {first: 5, second: 6}, {first: 7, second: 8}, {first: 9, second: 10}])
+    end
+  end
 end

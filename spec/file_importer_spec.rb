@@ -71,7 +71,6 @@ describe FileImporter do
           break
         end
         new_array << {first: array[index * 2], second: array[(index * 2) + 1]}
-        index = index + 5
       end
       expect(new_array).to match_array([{first: 1, second: 2}, {first: 3, second: 4}, {first: 5, second: 6}, {first: 7, second: 8}, {first: 9, second: 10}])
     end
